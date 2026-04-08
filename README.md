@@ -1,110 +1,114 @@
 # HateShield AI
 
-HateShield AI is a full-stack content safety and audience-insight platform for analyzing text, images, audience reactions, and pre-publication post quality.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Status](https://img.shields.io/badge/Project-Active-success)](#)
 
-Created and maintained by syedashraf49.
+AI-powered moderation and audience intelligence platform for safer digital publishing.
+
+HateShield helps creators and teams evaluate text, images, and audience reactions before content goes live.
 
 ## Project Preview
 
 ![HateShield dashboard preview](frontend/assets/readme-preview.svg)
 
-## What It Does
+## Why HateShield
 
-HateShield combines four core workflows into one lightweight application:
+Online content moves fast, and moderation often happens too late. HateShield provides a practical, pre-publication workflow to:
 
-- Text toxicity detection with confidence and emotion breakdowns.
-- Image moderation for offensive or harmful visual content.
-- Audience sentiment analysis from public URLs or local HTML fixtures.
-- Post review scoring for quality, engagement, and publication risk.
+- Detect toxic and hateful text with confidence scoring.
+- Flag potentially harmful visual content.
+- Analyze audience sentiment from URLs or imported comments.
+- Score post quality and publish risk with actionable recommendations.
 
-## Key Features
+## Core Modules
 
-### Text Analyzer
-- Classifies text as hate speech, offensive, toxic, or safe.
-- Returns confidence scores, emotion signals, and processing time.
+### 1. Text Analyzer
+- Classifies text into hate speech, offensive, toxic, or safe categories.
+- Returns confidence values, emotional cues, and processing time.
 
-### Image Detection
-- Upload an image for moderation analysis.
-- Uses the backend image prediction pipeline for risk classification.
+### 2. Image Detection
+- Accepts uploaded images for moderation checks.
+- Uses a dedicated backend image prediction pipeline.
 
-### Audience Analysis
-- Accepts a `post_url` / `url` or manual comments.
-- Supports local `file://` testing for reliable offline verification.
-- Extracts, cleans, and deduplicates comments from HTML.
+### 3. Audience Analysis
+- Supports `post_url` / `url`, manual comments, or text blocks.
+- Handles local `file://` fixtures for offline and repeatable testing.
+- Cleans and deduplicates extracted audience comments.
 
-### Post Analysis
-- Evaluates caption, hashtags, description, and target audience.
-- Produces quality, engagement, and toxicity risk scoring.
-- Returns actionable improvement suggestions and a publish recommendation.
+### 4. Post Analysis
+- Reviews caption, hashtags, description, and target audience.
+- Produces quality, engagement, and toxicity-risk signals.
+- Provides improvement suggestions and a publish recommendation.
 
 ## Tech Stack
 
-Backend:
+### Backend
 - Python 3.8+
-- Flask
-- Flask-CORS
-- scikit-learn
-- joblib
+- Flask + Flask-CORS
+- scikit-learn, joblib
 - Pillow
-- transformers
-- torch
+- transformers, torch
 
-Frontend:
-- HTML
-- CSS
-- JavaScript
-- Static pages served locally with `python -m http.server`
+### Frontend
+- HTML, CSS, JavaScript
+- Multi-page UI served with `python -m http.server`
 
-## Repository Layout
+## Architecture Snapshot
 
-```
+1. Frontend collects text/image/post/audience inputs.
+2. Requests are sent to Flask API endpoints.
+3. ML pipelines in `backend/ml` run classification and scoring.
+4. Structured JSON responses drive dashboard-style results.
+
+## Repository Structure
+
+```text
 HateShield/
-├─ backend/
-│  ├─ app.py
-│  ├─ requirements.txt
-│  ├─ requirements-train.txt
-│  └─ ml/
-│     ├─ predictor.py
-│     ├─ image_predictor.py
-│     ├─ train_model.py
-│     ├─ train_dataset.csv
-│     ├─ hate_speech_model.pkl
-│     └─ vectorizer.pkl
-├─ frontend/
-│  ├─ index.html
-│  ├─ dashboard.html
-│  ├─ text-analyzer.html
-│  ├─ image-detection.html
-│  ├─ audience-analysis.html
-│  ├─ post-analysis.html
-│  ├─ faceAI.html
-│  ├─ settings.html
-│  ├─ assets/
-│  ├─ css/
-│  ├─ js/
-│  └─ models/
-├─ test_positive.html
-├─ test_negative.html
-├─ test_neutral.html
-├─ TESTING_GUIDE.md
-└─ setup_and_run.bat
+|-- backend/
+|   |-- app.py
+|   |-- requirements.txt
+|   |-- requirements-train.txt
+|   `-- ml/
+|       |-- predictor.py
+|       |-- image_predictor.py
+|       |-- train_model.py
+|       `-- train_dataset.csv
+|-- frontend/
+|   |-- index.html
+|   |-- dashboard.html
+|   |-- text-analyzer.html
+|   |-- image-detection.html
+|   |-- audience-analysis.html
+|   |-- post-analysis.html
+|   |-- faceAI.html
+|   |-- settings.html
+|   |-- assets/
+|   |-- css/
+|   |-- js/
+|   `-- models/
+|-- test_positive.html
+|-- test_negative.html
+|-- test_neutral.html
+|-- TESTING_GUIDE.md
+`-- setup_and_run.bat
 ```
 
-## Quick Start
+## Getting Started
 
-### One-Step Launch on Windows
+### Option A: One-Step Launch (Windows)
 
-Run the startup script from the project root:
+From the project root, run:
 
 ```bat
 setup_and_run.bat
 ```
 
-This script verifies Python, installs dependencies, trains the model if required, starts the backend at `http://127.0.0.1:5000`, and serves the frontend at `http://localhost:8000`.
+The script checks Python, installs dependencies, trains the model (if needed), starts the backend at `http://127.0.0.1:5000`, and serves the frontend at `http://localhost:8000`.
 
-### Manual Launch
+### Option B: Manual Launch
 
-Start the backend:
+Backend terminal:
 
 ```powershell
 cd backend
@@ -112,40 +116,36 @@ py -m pip install -r requirements.txt
 py app.py
 ```
 
-Start the frontend in a second terminal:
+Frontend terminal:
 
 ```powershell
 cd frontend
 py -m http.server 8000
 ```
 
-Open `http://localhost:8000` in your browser.
+Then open `http://localhost:8000`.
 
-## API Overview
+## API Endpoints
 
 Base URL: `http://127.0.0.1:5000`
 
 ### `GET /`
-Health check endpoint.
+Service health endpoint.
 
 ### `POST /analyze`
-Analyze a text string for toxicity and emotional tone.
-
-Request:
+Runs text toxicity and emotion analysis.
 
 ```json
 { "text": "sample text" }
 ```
 
 ### `POST /analyze_image`
-Analyze an uploaded image.
+Runs moderation analysis on an uploaded image.
 
-Request: `multipart/form-data` with an `image` field.
+Request type: `multipart/form-data` with `image` field.
 
 ### `POST /analyze_audience`
-Analyze audience reactions from a URL or manual comments.
-
-Examples:
+Runs audience sentiment analysis from URL or provided comments.
 
 ```json
 { "post_url": "https://example.com/post" }
@@ -160,9 +160,7 @@ Examples:
 ```
 
 ### `POST /analyze_post`
-Run a pre-publication post review.
-
-Request:
+Runs pre-publication content quality and risk analysis.
 
 ```json
 {
@@ -175,26 +173,30 @@ Request:
 
 ## Testing
 
-The repository includes local HTML fixtures for repeatable audience-analysis testing:
+Local fixtures included for audience-analysis validation:
 
 - `test_positive.html`
 - `test_negative.html`
 - `test_neutral.html`
 
-For exact usage steps and expected sentiment outcomes, see `TESTING_GUIDE.md`.
+Detailed test instructions are in `TESTING_GUIDE.md`.
 
-## Notes
+## Limitations
 
-- Some social platforms block automated access or require authentication.
-- Pages that load comments only through JavaScript may not be fully extractable.
-- Public HTML structure has a direct impact on extraction quality.
+- Some platforms restrict scraping or require authentication.
+- Heavily JavaScript-rendered comments may be partially unavailable.
+- Extraction quality depends on the source page structure.
 
 ## Troubleshooting
 
-- If dependency installation fails, upgrade pip first with `py -m pip install --upgrade pip`.
-- If the backend does not start, confirm port `5000` is available.
-- If the frontend cannot reach the API, verify that the backend is running and CORS is enabled.
+- Upgrade pip if installs fail: `py -m pip install --upgrade pip`
+- Ensure port `5000` is free for the backend.
+- Confirm backend availability if frontend API calls fail.
+
+## Author
+
+Created and maintained by **syedashraf49**.
 
 ## License
 
-No license file is currently included in this repository. Add one before public or commercial distribution.
+No license file is currently included. Add a license before public or commercial distribution.
