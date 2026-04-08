@@ -1,141 +1,137 @@
-# HateShield AI
+# 🛡️ HateShield AI
+
+> **Production-grade AI Moderation & Audience Intelligence Platform**
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Flask](https://img.shields.io/badge/Flask-REST%20API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com)
 
-Production-style AI moderation and audience intelligence platform for safer digital publishing.
+HateShield is a comprehensive AI-powered content moderation platform designed for creators and teams. Evaluate text, images, and audience reactions **before content goes live** with confidence scoring and actionable insights.
 
-HateShield helps creators and teams evaluate text, images, and audience reactions before content goes live.
+---
 
-## Quick Links
+## 📋 Table of Contents
 
-- [Project Preview](#project-preview)
-- [Why HateShield](#why-hateshield)
-- [Core Modules](#core-modules)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-- [License](#license)
+- [✨ Key Features](#key-features)
+- [🎯 Why HateShield](#why-hateshield)
+- [🔧 Core Modules](#core-modules)
+- [🏗️ Tech Stack](#tech-stack)
+- [📦 Prerequisites](#prerequisites)
+- [🚀 Quick Start](#quick-start)
+- [🔌 API Reference](#api-reference)
+- [🧪 Testing](#testing)
+- [📄 License](#license)
 
-## Portfolio Summary
+---
 
-HateShield demonstrates end-to-end product thinking across machine learning, backend API design, and frontend user experience.
+## ✨ Key Features
 
-- Multi-module moderation workflow in a single web app.
-- Practical JSON APIs for real integration scenarios.
-- Local testing fixtures for reliable verification and demos.
-- Clear deployment path for both quick run and manual setup.
+| Feature | Description |
+|---------|-------------|
+| 🔤 **Text Analysis** | Classifies content into hate speech, offensive, toxic, or safe with confidence scoring |
+| 🖼️ **Image Moderation** | Advanced visual content analysis for potentially harmful material |
+| 👥 **Audience Sentiment** | Analyzes audience reactions from URLs or manual comment inputs |
+| 📊 **Post Quality Scoring** | Pre-publication risk assessment with improvement recommendations |
+| ⚡ **Real-time Processing** | Fast JSON APIs for production integration |
+| 🧪 **Local Testing** | Offline fixtures for repeatable validation and demos |
 
-## Project Preview
+---
 
-![HateShield dashboard preview](frontend/assets/readme-preview.svg)
+## 🎯 Why HateShield
 
-## Why HateShield
+Online content moves fast—and moderation often happens too late. HateShield provides a practical, **pre-publication workflow** to:
 
-Online content moves fast, and moderation often happens too late. HateShield provides a practical, pre-publication workflow to:
+- ✅ Detect toxic and hateful text with confidence metrics
+- ✅ Flag potentially harmful visual content
+- ✅ Analyze audience sentiment automatically
+- ✅ Score post quality and publish risk with actionable feedback
 
-- Detect toxic and hateful text with confidence scoring.
-- Flag potentially harmful visual content.
-- Analyze audience sentiment from URLs or imported comments.
-- Score post quality and publish risk with actionable recommendations.
+---
 
-## Core Modules
+## 🔧 Core Modules
 
-### 1. Text Analyzer
-- Classifies text into hate speech, offensive, toxic, or safe categories.
-- Returns confidence values, emotional cues, and processing time.
+### 1. 🔤 Text Analyzer
+Classifies text content with detailed analysis:
+- Categorization: Hate Speech, Offensive, Toxic, Safe
+- Confidence scores for each category
+- Emotional tone detection
+- Processing metrics
 
-### 2. Image Detection
-- Accepts uploaded images for moderation checks.
-- Uses a dedicated backend image prediction pipeline.
+### 2. 🖼️ Image Detection
+Visual content moderation pipeline:
+- Batch image uploads supported
+- Deep learning-based classification
+- Confidence-based flagging
+- Instant results
 
-### 3. Audience Analysis
-- Supports `post_url` / `url`, manual comments, or text blocks.
-- Handles local `file://` fixtures for offline and repeatable testing.
-- Cleans and deduplicates extracted audience comments.
+### 3. 👥 Audience Analysis
+Multi-source sentiment analysis:
+- URL-based comment extraction
+- Manual comment input
+- Text block analysis
+- Smart deduplication and cleaning
+- Local `file://` fixtures for offline testing
 
-### 4. Post Analysis
-- Reviews caption, hashtags, description, and target audience.
-- Produces quality, engagement, and toxicity-risk signals.
-- Provides improvement suggestions and a publish recommendation.
+### 4. 📊 Post Analysis
+Comprehensive pre-publication review:
+- Caption, hashtags, description analysis
+- Target audience consideration
+- Quality, engagement, and risk scores
+- AI-powered improvement suggestions
+- Publish/hold recommendations
 
-## Tech Stack
+---
 
-### Backend
+## 🏗️ Tech Stack
+
+<div>
+
+**Backend**
 - Python 3.8+
 - Flask + Flask-CORS
 - scikit-learn, joblib
 - Pillow
 - transformers, torch
 
-### Frontend
-- HTML, CSS, JavaScript
-- Multi-page UI served with `python -m http.server`
+**Frontend**
+- HTML5 / CSS3 / JavaScript
+- Responsive multi-page interface
+- Built-in HTTP server
 
-## Architecture Snapshot
+</div>
 
-1. Frontend collects text/image/post/audience inputs.
-2. Requests are sent to Flask API endpoints.
-3. ML pipelines in `backend/ml` run classification and scoring.
-4. Structured JSON responses drive dashboard-style results.
+---
 
-## Prerequisites
+## 📦 Prerequisites
 
-- Python 3.8 or newer
-- pip (latest recommended)
-- Windows PowerShell or Command Prompt
-- Internet connection for first-time dependency installation
+- **Python** 3.8 or newer
+- **pip** (latest recommended)
+- **Windows PowerShell** or Command Prompt
+- **Internet connection** (for first-time dependency installation)
 
-## Repository Structure
+---
 
-```text
-HateShield/
-|-- backend/
-|   |-- app.py
-|   |-- requirements.txt
-|   |-- requirements-train.txt
-|   `-- ml/
-|       |-- predictor.py
-|       |-- image_predictor.py
-|       |-- train_model.py
-|       `-- train_dataset.csv
-|-- frontend/
-|   |-- index.html
-|   |-- dashboard.html
-|   |-- text-analyzer.html
-|   |-- image-detection.html
-|   |-- audience-analysis.html
-|   |-- post-analysis.html
-|   |-- faceAI.html
-|   |-- settings.html
-|   |-- assets/
-|   |-- css/
-|   |-- js/
-|   `-- models/
-|-- test_positive.html
-|-- test_negative.html
-|-- test_neutral.html
-|-- TESTING_GUIDE.md
-`-- setup_and_run.bat
-```
+## 🚀 Quick Start
 
-## Getting Started
+### ⚡ Option A: Automated Setup (Windows)
 
-### Option A: One-Step Launch (Windows)
+One command to get everything running:
 
-From the project root, run:
-
-```bat
+```bash
 setup_and_run.bat
 ```
 
-The script checks Python, installs dependencies, trains the model (if needed), starts the backend at `http://127.0.0.1:5000`, and serves the frontend at `http://localhost:8000`.
+This script automatically:
+1. ✅ Verifies Python installation
+2. ✅ Installs all dependencies
+3. ✅ Trains ML models (if needed)
+4. ✅ Launches backend at `http://127.0.0.1:5000`
+5. ✅ Serves frontend at `http://localhost:8000`
 
-### Option B: Manual Launch
+### 📝 Option B: Manual Setup
 
-Backend terminal:
+**Terminal 1 - Backend:**
 
 ```powershell
 cd backend
@@ -143,92 +139,167 @@ py -m pip install -r requirements.txt
 py app.py
 ```
 
-Frontend terminal:
+**Terminal 2 - Frontend:**
 
 ```powershell
 cd frontend
 py -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then open **`http://localhost:8000`** in your browser.
 
-## Training Notes
+---
 
-- In normal use, the startup script trains only if required artifacts are missing.
-- For explicit training workflows, use files in `backend/ml` and `backend/requirements-train.txt`.
+## 📁 Project Structure
 
-## API Endpoints
-
-Base URL: `http://127.0.0.1:5000`
-
-### `GET /`
-Service health endpoint.
-
-### `POST /analyze`
-Runs text toxicity and emotion analysis.
-
-```json
-{ "text": "sample text" }
+```
+HateShield/
+├── backend/
+│   ├── app.py                 # Flask API server
+│   ├── requirements.txt        # Runtime dependencies
+│   ├── requirements-train.txt  # ML training dependencies
+│   └── ml/
+│       ├── predictor.py        # Text classification
+│       ├── image_predictor.py  # Image moderation
+│       ├── train_model.py      # Model training script
+│       └── train_dataset.csv   # Training data
+├── frontend/
+│   ├── index.html             # Dashboard home
+│   ├── text-analyzer.html     # Text moderation UI
+│   ├── image-detection.html   # Image upload interface
+│   ├── audience-analysis.html # Sentiment analysis
+│   ├── post-analysis.html     # Full post review
+│   ├── faceAI.html           # Face expression detection
+│   ├── css/                   # Stylesheets
+│   ├── js/                    # Client-side logic
+│   └── models/               # ML model weights
+├── test_positive.html         # Sample test fixture
+├── test_negative.html         # Sample test fixture
+├── test_neutral.html          # Sample test fixture
+└── TESTING_GUIDE.md          # Detailed testing docs
 ```
 
-### `POST /analyze_image`
-Runs moderation analysis on an uploaded image.
+---
 
-Request type: `multipart/form-data` with `image` field.
+## 🔌 API Reference
 
-### `POST /analyze_audience`
-Runs audience sentiment analysis from URL or provided comments.
+**Base URL:** `http://127.0.0.1:5000`
 
-```json
-{ "post_url": "https://example.com/post" }
+### Health Check
+```http
+GET /
 ```
 
-```json
-{ "comments": ["comment one", "comment two"] }
+### Text Analysis
+```http
+POST /analyze
+Content-Type: application/json
+
+{
+  "text": "Your text to analyze"
+}
 ```
 
-```json
-{ "text": "line 1\nline 2\nline 3" }
+### Image Moderation
+```http
+POST /analyze_image
+Content-Type: multipart/form-data
+
+[image field]
 ```
 
-### `POST /analyze_post`
-Runs pre-publication content quality and risk analysis.
+### Audience Sentiment
+```http
+POST /analyze_audience
+Content-Type: application/json
 
-```json
+# Option 1: From URL
+{
+  "post_url": "https://example.com/post"
+}
+
+# Option 2: From comments
+{
+  "comments": ["comment one", "comment two"]
+}
+
+# Option 3: From text block
+{
+  "text": "line 1\nline 2"
+}
+```
+
+### Post Quality Review
+```http
+POST /analyze_post
+Content-Type: application/json
+
 {
   "caption": "Your caption",
   "hashtags": "#example #ai #safety",
-  "description": "Longer post details",
+  "description": "Extended post details",
   "target_audience": "Developers"
 }
 ```
 
-## Testing
+---
 
-Local fixtures included for audience-analysis validation:
+## 🧪 Testing
 
-- `test_positive.html`
-- `test_negative.html`
-- `test_neutral.html`
+Local test fixtures are included for validation:
 
-Detailed test instructions are in `TESTING_GUIDE.md`.
+| File | Purpose |
+|------|---------|
+| `test_positive.html` | Positive sentiment example |
+| `test_negative.html` | Negative sentiment example |
+| `test_neutral.html` | Neutral sentiment example |
 
-## Limitations
+📚 **See `TESTING_GUIDE.md` for complete testing instructions.**
 
-- Some platforms restrict scraping or require authentication.
-- Heavily JavaScript-rendered comments may be partially unavailable.
-- Extraction quality depends on the source page structure.
+### Common Test Scenarios
+- ✅ Testing text moderation with various input types
+- ✅ Batch image analysis
+- ✅ URL-based audience extraction
+- ✅ Model accuracy validation
 
-## Troubleshooting
+---
 
-- Upgrade pip if installs fail: `py -m pip install --upgrade pip`
-- Ensure port `5000` is free for the backend.
-- Confirm backend availability if frontend API calls fail.
+## ⚙️ Training Notes
 
-## Author
+- **Default behavior:** Models train automatically only if required artifacts are missing
+- **Manual training:** Use scripts in `backend/ml/` with dependencies from `requirements-train.txt`
+- **Custom datasets:** Place training data in `backend/ml/train_dataset.csv`
 
-Created and maintained by **syedashraf49**.
+---
 
-## License
+## ⚠️ Known Limitations
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+| Limitation | Details |
+|-----------|---------|
+| **Web Scraping** | Some platforms restrict scraping or require authentication |
+| **JavaScript Content** | Heavily rendered comments may be partially unavailable |
+| **Page Structure** | Extraction quality depends on target site structure |
+
+---
+
+## 🔧 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Installation fails | `py -m pip install --upgrade pip` |
+| Port 5000 unavailable | Ensure backend isn't already running on that port |
+| Frontend API errors | Verify backend is running: `http://127.0.0.1:5000` |
+| Dependency issues | Delete virtual environment and reinstall |
+
+---
+
+## 👤 Author
+
+Created and maintained by **syedashraf49**
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for complete terms.
+
