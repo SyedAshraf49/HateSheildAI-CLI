@@ -2,11 +2,31 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![Status](https://img.shields.io/badge/Project-Active-success)](#)
 
-AI-powered moderation and audience intelligence platform for safer digital publishing.
+Production-style AI moderation and audience intelligence platform for safer digital publishing.
 
 HateShield helps creators and teams evaluate text, images, and audience reactions before content goes live.
+
+## Quick Links
+
+- [Project Preview](#project-preview)
+- [Why HateShield](#why-hateshield)
+- [Core Modules](#core-modules)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [API Endpoints](#api-endpoints)
+- [Testing](#testing)
+- [License](#license)
+
+## Portfolio Summary
+
+HateShield demonstrates end-to-end product thinking across machine learning, backend API design, and frontend user experience.
+
+- Multi-module moderation workflow in a single web app.
+- Practical JSON APIs for real integration scenarios.
+- Local testing fixtures for reliable verification and demos.
+- Clear deployment path for both quick run and manual setup.
 
 ## Project Preview
 
@@ -60,6 +80,13 @@ Online content moves fast, and moderation often happens too late. HateShield pro
 2. Requests are sent to Flask API endpoints.
 3. ML pipelines in `backend/ml` run classification and scoring.
 4. Structured JSON responses drive dashboard-style results.
+
+## Prerequisites
+
+- Python 3.8 or newer
+- pip (latest recommended)
+- Windows PowerShell or Command Prompt
+- Internet connection for first-time dependency installation
 
 ## Repository Structure
 
@@ -124,6 +151,11 @@ py -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
+
+## Training Notes
+
+- In normal use, the startup script trains only if required artifacts are missing.
+- For explicit training workflows, use files in `backend/ml` and `backend/requirements-train.txt`.
 
 ## API Endpoints
 
@@ -199,4 +231,4 @@ Created and maintained by **syedashraf49**.
 
 ## License
 
-No license file is currently included. Add a license before public or commercial distribution.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
